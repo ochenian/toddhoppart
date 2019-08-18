@@ -8,8 +8,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import StyledBackgroundSection from "./background"
 
-import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -24,26 +25,30 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+    <StyledBackgroundSection>
+      <PageContainer>
+
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+
+        <Footer>
+          © {new Date().getFullYear()}, Built by Brandon Kent with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+        </Footer>
+
+      </PageContainer>
+    </StyledBackgroundSection>
   )
 }
+
+const PageContainer = styled.div`
+  padding: 1em;
+`
+
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
