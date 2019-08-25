@@ -7,9 +7,9 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
-import StyledBackgroundSection from "./background"
+import styled, { ThemeProvider } from "styled-components"
+import theme from "../assets/theme"
+import Background from "./background"
 import FacebookIcon from "../assets/svg/icon-fb.inline.svg"
 import InstagramIcon from "../assets/svg/icon-instagram.inline.svg"
 import TwitterIcon from "../assets/svg/icon-twitter.inline.svg"
@@ -17,44 +17,34 @@ import TwitterIcon from "../assets/svg/icon-twitter.inline.svg"
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <StyledBackgroundSection>
-      <PageContainer>
+    <ThemeProvider theme={theme}>
+      <Background>
+        <PageContainer>
+          <MainContainer>{children}</MainContainer>
 
-        <MainContainer>{children}</MainContainer>
+          <SocialIconsContainer>
+            <SocialMediaIconLink href="https://www.facebook.com/todd.hoppmeyer">
+              <StyledFacebookIcon />
+            </SocialMediaIconLink>
 
-        <SocialIconsContainer>
-          <SocialMediaIconLink href="https://www.facebook.com/todd.hoppmeyer">
-            <StyledFacebookIcon />
-          </SocialMediaIconLink>
+            <SocialMediaIconLink href="https://www.instagram.com/treztronic">
+              <StyledInstagramIcon />
+            </SocialMediaIconLink>
 
-          <SocialMediaIconLink href="https://www.instagram.com/treztronic">
-            <StyledInstagramIcon />
-          </SocialMediaIconLink>
+            <SocialMediaIconLink href="https://twitter.com/treztronic">
+              <StyledTwitterIcon />
+            </SocialMediaIconLink>
+          </SocialIconsContainer>
 
-          <SocialMediaIconLink href="https://twitter.com/treztronic">
-            <StyledTwitterIcon />
-          </SocialMediaIconLink>
-        </SocialIconsContainer>
-
-        <Footer>
-          © {new Date().getFullYear()}, Built by Brandon Kent with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-
-      </PageContainer>
-    </StyledBackgroundSection>
+          <Footer>
+            ©{new Date().getFullYear()}, Built by Brandon Kent with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </Footer>
+        </PageContainer>
+      </Background>
+    </ThemeProvider>
   )
 }
 
@@ -95,7 +85,7 @@ const StyledFacebookIcon = styled(FacebookIcon)`
   cursor: pointer;
 
   &:hover path.fill {
-    fill: #3B5998;
+    fill: #3b5998;
   }
 `
 
@@ -113,7 +103,7 @@ const StyledTwitterIcon = styled(TwitterIcon)`
   cursor: pointer;
 
   &:hover path.fill {
-    fill: #38A1F3;
+    fill: #38a1f3;
   }
 `
 
@@ -124,7 +114,7 @@ const SocialMediaIconLink = styled.a`
   width: 100%;
 
   cursor: pointer;
-`;
+`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

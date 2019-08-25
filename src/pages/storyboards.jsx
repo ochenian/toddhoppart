@@ -17,31 +17,29 @@ const StoryboardsPage = () => (
     <SEO title="Storyboards" />
 
     <Header>
-      <StyledLogo></StyledLogo>
-      <StyledContactLink></StyledContactLink>
+      <StyledLogo />
+      <StyledContactLink />
     </Header>
 
     <MarqueeContainer>
-      <StyledStoryboardsMarquee></StyledStoryboardsMarquee>
+      <StyledStoryboardsMarquee />
     </MarqueeContainer>
 
     <SubMarqueeContainer>
-      <StyledAnimationSubMarquee></StyledAnimationSubMarquee>
-      <StyledCommercialSubMarquee></StyledCommercialSubMarquee>
+      <StyledAnimationSubMarquee />
+      <StyledCommercialSubMarquee />
     </SubMarqueeContainer>
 
     <FrameContainer>
-      <StyledLeftAnimationFrame></StyledLeftAnimationFrame>
-      <StyledRightAnimationFrame></StyledRightAnimationFrame>
+      <StyledLeftAnimationFrame />
+      <StyledRightAnimationFrame />
 
-      <StyledLeftAnimationFrame></StyledLeftAnimationFrame>
-      <StyledRightAnimationFrame></StyledRightAnimationFrame>
+      <StyledLeftAnimationFrame />
+      <StyledRightAnimationFrame />
 
-      <StyledLeftAnimationFrame></StyledLeftAnimationFrame>
-      <StyledRightAnimationFrame></StyledRightAnimationFrame>
+      <StyledLeftAnimationFrame />
+      <StyledRightAnimationFrame />
     </FrameContainer>
-
-
   </Layout>
 )
 

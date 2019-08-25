@@ -11,7 +11,6 @@ import ContactLink from "../assets/svg/link-contact.inline.svg"
 
 const IndexPage = () => (
   <Layout>
-
     <SEO title="Home" />
 
     <StyledSiteNavBtn />
@@ -22,12 +21,11 @@ const IndexPage = () => (
         <Link to="/storyboards/">
           <StyledStoryboardLink />
         </Link>
-        <Link to="/page-2/">
+        <Link to="/contact/">
           <StyledContactLink />
         </Link>
       </LinksContainer>
     </LogoLinksContainer>
-
   </Layout>
 )
 
@@ -69,7 +67,7 @@ const StyledStoryboardLink = styled(StoryboardLink)`
   height: auto;
 
   &:hover path.text-color {
-    fill: #FF0095;
+    fill: ${props => props.theme.color.pink};
   }
 `
 
@@ -80,7 +78,7 @@ const StyledContactLink = styled(ContactLink)`
   margin: 12px 0 0 20%;
 
   &:hover path.text-color {
-    fill: #05B0F0;
+    fill: ${props => props.theme.color.lightBlue};
   }
 `
 
