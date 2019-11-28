@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { Location } from '@reach/router';
 
 import GifPlayer from "react-gif-player"
 import Layout from "../components/layout"
@@ -11,13 +12,17 @@ import StoryboardsLink from "../assets/svg/link-storyboards.inline.svg"
 import ContactMarquee from "../assets/svg/header-contact.inline.svg"
 import SendGif from "../images/Send_Animation.gif"
 import SendPng from "../images/Send_Animation_Still.png"
+import DelayedLink from "../components/delayedLink"
 
-const StoryboardsPage = () => (
+const ContactPage = () => (
   <Layout>
     <SEO title="Contact" />
 
     <Header>
-      <StyledLogo />
+      <Link to="/">
+        <StyledLogo />
+      </Link>
+
       <LinkWrapper to="/storyboards">
         <StyledStoryboardsLink />
       </LinkWrapper>
@@ -31,20 +36,40 @@ const StoryboardsPage = () => (
       <StyledForm method="POST" action="#">
         <StyledInput placeholder="Email" />
         <StyledTextArea placeholder="Message" rows="6" />
-        <StyledGifPlayer gif={SendGif} still={SendPng} />
+        <Location>
+          {({ location }) => {
+            return  <DelayedLink
+            location={location} // Current location from template of page
+            // onClick={this.handleClick} // (optional) Click event for this component to apply animation classes
+            delay={2000} // Delay to perform navigate event (ms)
+            to="/thanks" // Destination of link
+          >
+            <StyledGifPlayer gif={SendGif} still={SendPng} />
+          </DelayedLink>
+
+          }
+        }
+
+        </Location>
+
+
       </StyledForm>
     </FormContainer>
   </Layout>
 )
 
 const StyledLogo = styled(Logo)`
-  width: 15%;
+  width: 50%;
 `
 
 const StyledStoryboardsLink = styled(StoryboardsLink)`
-  width: 50%;
+  width: 65%;
 
   cursor: pointer;
+
+  &:hover path.text-color {
+    fill: ${props => props.theme.color.pink};
+  }
 `
 
 const Header = styled.header`
@@ -55,10 +80,12 @@ const Header = styled.header`
 const MarqueeContainer = styled.div`
   display: flex;
   justify-content: center;
+
+  margin-top: -2em;
 `
 
 const StyledContactMarquee = styled(ContactMarquee)`
-  width: 20%;
+  width: 14%;
   height: 100%;
 
   margin-bottom: 1em;
@@ -68,6 +95,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
 
+  margin: 0;
   width: 50%;
 `
 const StyledInput = styled.input`
@@ -102,9 +130,9 @@ const FormContainer = styled.div`
 `
 
 const StyledGifPlayer = styled(GifPlayer)`
-  margin-left: 75%;
+  margin-left: 86%;
   margin-top: 1em;
-  width: 25%;
+  width: 15%;
 `
 
 const LinkWrapper = styled(Link)`
@@ -114,4 +142,4 @@ const LinkWrapper = styled(Link)`
   margin: 2em 2em 0 0;
 `
 
-export default StoryboardsPage
+export default ContactPage
