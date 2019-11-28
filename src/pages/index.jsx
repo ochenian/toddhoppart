@@ -13,7 +13,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
 
-    <StyledSiteNavBtn />
+    {/* <StyledSiteNavBtn /> */}
 
     <LogoLinksContainer>
       <StyledLogo />
@@ -31,10 +31,9 @@ const IndexPage = () => (
 
 const LogoLinksContainer = styled.div`
   width: 90%;
-  height: 100%;
   max-width: 700px;
   margin: 0 auto;
-  margin-bottom: 4em;
+  margin-top: 3em;
 `
 
 const LinksContainer = styled.div`
@@ -43,7 +42,7 @@ const LinksContainer = styled.div`
 
   position: relative;
   left: 42%;
-  margin-top: -24%;
+  margin-top: -22%;
 `
 
 const StyledSiteNavBtn = styled(SiteNavButton)`
