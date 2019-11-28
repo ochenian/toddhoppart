@@ -21,27 +21,30 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <Background>
         <PageContainer>
-          <MainContainer>{children}</MainContainer>
+          <MainContainer>
+            {children}
 
-          <SocialIconsContainer>
-            <SocialMediaIconLink href="https://www.facebook.com/todd.hoppmeyer">
-              <StyledFacebookIcon />
-            </SocialMediaIconLink>
+            <FooterContainer>
+              <SocialIconsContainer>
+                <SocialMediaIconLink href="https://www.facebook.com/todd.hoppmeyer">
+                  <StyledFacebookIcon />
+                </SocialMediaIconLink>
 
-            <SocialMediaIconLink href="https://www.instagram.com/treztronic">
-              <StyledInstagramIcon />
-            </SocialMediaIconLink>
+                <SocialMediaIconLink href="https://www.instagram.com/treztronic">
+                  <StyledInstagramIcon />
+                </SocialMediaIconLink>
 
-            <SocialMediaIconLink href="https://twitter.com/treztronic">
-              <StyledTwitterIcon />
-            </SocialMediaIconLink>
-          </SocialIconsContainer>
-
-          <Footer>
-            ©{new Date().getFullYear()}, Built by Brandon Kent with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </Footer>
+                <SocialMediaIconLink href="https://twitter.com/treztronic">
+                  <StyledTwitterIcon />
+                </SocialMediaIconLink>
+              </SocialIconsContainer>
+              <Byline>
+                ©{new Date().getFullYear()}, Built by Brandon Kent with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a>
+              </Byline>
+            </FooterContainer>
+          </MainContainer>
         </PageContainer>
       </Background>
     </ThemeProvider>
@@ -59,13 +62,15 @@ const PageContainer = styled.div`
 `
 
 const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
   overflow: auto;
 `
 
-const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
+const FooterContainer = styled.footer`
+  margin-top: auto;
 `
 
 const SocialIconsContainer = styled.section`
@@ -74,7 +79,7 @@ const SocialIconsContainer = styled.section`
   align-items: center;
 
   width: 40%;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
   max-width: 300px;
 `
 
@@ -114,6 +119,10 @@ const SocialMediaIconLink = styled.a`
   width: 100%;
 
   cursor: pointer;
+`
+
+const Byline = styled.div`
+  text-align: center;
 `
 
 Layout.propTypes = {
